@@ -40,6 +40,7 @@ func New[K comparable, V any](opts ...Option[K, V]) *Cache[K, V] {
 		defaultTTL:     cfg.defaultTTL,
 		maxSize:        cfg.maxSize,
 		evictionPolicy: cfg.evictionPolicy,
+		evictor:        newEvictor[K](cfg.evictionPolicy),
 		onEvicted:      cfg.onEvicted,
 	}
 
